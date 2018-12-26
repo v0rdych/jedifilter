@@ -1,0 +1,27 @@
+{
+ "name": "Jedi Filter (alt-edition v0rd ed.)",
+ "version": "2.1.3",
+ "manifest_version": 2, 
+ "description": "Я их не перевариваю:... & coub!",
+ "background": { "page": "bg.html"
+				},
+	
+ "content_scripts": [
+    {
+      "matches": ["http://jediru.net/*","http://www.jediru.net/*"],
+      "js": ["j.js","kick.js"]
+    }
+  ],
+ "permissions": [
+    "tabs",
+    "notifications",
+	"http://jediru.net/*",
+	"http://www.jediru.net/*"
+ ],
+
+ "browser_action": { 
+   "default_title": "Jedi advanced reader", 
+	"default_icon": "icon3.png",
+   "default_popup": "action.html" 
+ }
+}
