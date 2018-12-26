@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		else
 		{
-			showOptions("cllpsqts","Collapse quotes");
+			showOptions("cllpsqts","Сворачивать цитаты");
 		}
 		
 	});
