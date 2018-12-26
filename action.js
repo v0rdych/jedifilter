@@ -43,6 +43,7 @@ var z = "";
 		else {
 			$("#options").append('<tr><td><label class="checkbox"><input class="options" type="checkbox" name='+option+' checked="checked">'+description+"</label></td></tr>");
 		}
+		document.querySelector('input[type=checkbox]').addEventListener('click',setOption);
 	};
 
 //Обработка чекбоксов
@@ -52,16 +53,32 @@ var z = "";
 			localStorage[checkBoxName]=true;
 		}
 		else {
+			
 			localStorage[checkBoxName]=false;
 		}
 	};
 
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('button').addEventListener('click', addToStorage);
+  
 });
-	
-	
-	
+
+	chrome.extension.sendRequest({localstorage: "cllpsqts"}, function(response){ 
+	    console.log("trying to call showOptions with "+response.cllpsqts+" data");
+		if (!response.cllpsqts)
+			{
+				showOptions("cllpsqts","Сворачивать цитаты");
+				localStorage["cllpsqts"]=true;
+				var textinputs = document.querySelector('input[name=cllpsqts]');
+				textinputs.checked=true;
+			}
+		else
+		{
+			showOptions("cllpsqts","Collapse quotes");
+		}
+		
+	});
+
 	chrome.extension.sendRequest({localstorage: "kicked"}, function(response){ 
 		lst = response.kicked;
 		z = response.kicked.split('=#####=');

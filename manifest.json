@@ -1,6 +1,6 @@
 {
  "name": "Jedi Filter (alt-edition v0rd ed.)",
- "version": "2.1.4",
+ "version": "2.2.0",
  "manifest_version": 2, 
  "description": "Я их не перевариваю:... & coub!",
  "background": { "page": "bg.html"
@@ -15,6 +15,7 @@
  "permissions": [
     "tabs",
     "notifications",
+	"storage",
 	"http://jediru.net/*",
 	"http://www.jediru.net/*"
  ],

@@ -9,8 +9,7 @@ chrome.extension.onRequest.addListener(
 			}
 			else
 				sendResponse({}); 
-		};
-		
+		};		
 		if (request.localstorage == "kicked") {
 			sendResponse({kicked: (localStorage.kicked||"")});
 		}
@@ -18,16 +17,13 @@ chrome.extension.onRequest.addListener(
 					localStorage['kicked']=request.settedValue; 
 					sendResponse({status:'ok'}); 
 				}
-				else responseOptions(request.localstorage);
+				else {
+					
+					responseOptions(request.localstorage);}
 });
 
 chrome.browserAction.setBadgeText({text:"123"})
 chrome.browserAction.setBadgeBackgroundColor({color:"#00FF00"})
-
-function setTextOnBadge(textOnBadge)
-{
-
-}
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     switch(request.type) {
@@ -37,9 +33,3 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     }
     return true;
 });
-
-
-
-/*
-
-*/

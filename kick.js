@@ -3,6 +3,7 @@
 2017 Dmitry Vorobiev v0rd@yandex.ru
 *************************************************/
 var current_pretendent = "";
+var collapse_quotes="yes";
 var vhosts = [
 [
 	/((http\:\/\/)?(www\.)?youtube\.com\/watch\?v\=)([a-zA-Z0-9\-_]+)(\&.*)?$/i , 
@@ -41,6 +42,7 @@ $.get(
 	var body = {
 		"font-family":"Verdana, Helvetica, sans-serif",
 	}
+	
 	$("body").css(body);
 	function insertText(){
 		var tag = $(this).attr("title");
@@ -62,9 +64,22 @@ $.get(
 		}
 	};
 });
+
+
+
+
 	chrome.extension.sendRequest({localstorage: "kicked"}, function(response) {
 		var st = response.kicked.split("=#####=");
 	$("body").append("<div id='popupp' style='position:absolute;padding:9px;-webkit-border-radius:10px;font-size:12px;background:#EEE;-webkit-box-shadow:0 0 3px 4px #CCC;display:none;z-index:5000;'><a id='to_s' style='color:red' href='javascript:;' >В список!</a><br /><br /><a style='color:green' href='javascript:;' id='from_s'>Реабилитировать</a></div>");
+	
+	
+//	chrome.storage.local.get({"collapsequotes":"yes"}, function(data) {
+  // Use data[key]
+//        collapse_quotes = data["collapsequotes"];
+//		console.log(collapse_quotes);
+//	});
+
+	$("strong.info-replies").css('left','0px');
 	$("#to_s").click(function() {
 	var uy = current_pretendent;
 	var lst = st;
@@ -153,11 +168,14 @@ $.get(
 						}
 					});
 				});
+
+		
 			$("div.quotebox").each(function(){
 				var text = $(this).find("cite").text().replace(/\s+пишет\:/gim,'')||"";
 				if(in_array(text,st) && text!="") $(this).css({'opacity':'0.1'});
 
 			});
+
 			$("span.item-starter").each(function(){
 				var text = $(this).find("cite").text()||"";
 				if(in_array(text,st) && text!="") $(this).parents("div.main-item").css({'opacity':'0.1'});
@@ -173,3 +191,25 @@ $.get(
 			});
 
 	});
+
+chrome.extension.sendRequest({localstorage: "cllpsqts"}, function(response) {
+	if (response.cllpsqts && (response.cllpsqts !== "false") )
+	{
+			$("div.quotebox").each(function(){
+				var oldhtmlquotebox = $(this).html();
+				$(this).html( "<input type='button' class='hideshow' value='+/-'>"+oldhtmlquotebox );
+			});
+			$("blockquote").each(function(){
+				$(this).hide();
+			});
+				
+			$(".hideshow").each(function(){
+				$(this).click(function(event) { 
+					$(this).parents("div.quotebox").find("blockquote").each(function (){
+						$(this).toggle("show");
+					});
+				});
+				
+			});
+	}
+});
