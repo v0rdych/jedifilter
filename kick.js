@@ -103,8 +103,8 @@ $.get(
 			});
 		$("div.posthead").bind("contextmenu",function(event){
 		var target = (event||window.event);
-		var x = target.clientX+document.body.scrollLeft+5;
-		var y = target.clientY+document.body.scrollTop+5;
+		var x = target.clientX+document.documentElement.scrollLeft+5;
+		var y = target.clientY+document.documentElement.scrollTop+5;
 		current_pretendent = $(this).find("span.post-byline").find("a").text()||"";
 		$("#popupp").css({'left':x+'px','top':y+'px'}).show();
 		$("div.posthead").click(function(){
