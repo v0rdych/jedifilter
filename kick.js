@@ -201,13 +201,16 @@ chrome.extension.sendRequest({localstorage: "cllpsqts"}, function(response) {
 			});
 			$("blockquote").each(function(){
 				$(this).hide();
+				
 			});
 				
 			$(".hideshow").each(function(){
-				$(this).click(function(event) { 
+				$(this).click(function(event) {
+                    
 					$(this).parents("div.quotebox").find("blockquote").each(function (){
 						$(this).toggle("show");
 					});
+					$(this).blur();
 				});
 				
 			});
