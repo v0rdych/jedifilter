@@ -7,11 +7,11 @@ var collapse_quotes="yes";
 var vhosts = [
 [
 	/((http\:\/\/)?(www\.)?youtube\.com\/watch\?v\=)([a-zA-Z0-9\-_]+)(\&.*)?$/i , 
-	"<iframe title=\"YouTube video player\" width=\"425\" height=\"349\" src=\"http://www.youtube.com/embed/$4\" frameborder=\"0\" allowfullscreen></iframe>"
+	"<iframe title=\"YouTube video player\" width=\"425\" height=\"349\" src=\"https://www.youtube.com/embed/$4\" frameborder=\"0\" allowfullscreen></iframe>"
 ],
 [
 	/((http\:\/\/)?(www\.)?rutube\.ru\/tracks\/\d+\.html\?v\=)([a-zA-Z0-9\-]+)(\&.*)?$/i , 
-	"<OBJECT width=\"470\" height=\"353\"><PARAM name=\"movie\" value=\"http://video.rutube.ru/$4\"></PARAM><PARAM name=\"wmode\" value=\"window\"></PARAM><PARAM name=\"allowFullScreen\" value=\"true\"></PARAM><EMBED src=\"http://video.rutube.ru/$4\" type=\"application/x-shockwave-flash\" wmode=\"window\" width=\"470\" height=\"353\" allowFullScreen=\"true\" ></EMBED></OBJECT>"
+	"<OBJECT width=\"470\" height=\"353\"><PARAM name=\"movie\" value=\"https://video.rutube.ru/$4\"></PARAM><PARAM name=\"wmode\" value=\"window\"></PARAM><PARAM name=\"allowFullScreen\" value=\"true\"></PARAM><EMBED src=\"https://video.rutube.ru/$4\" type=\"application/x-shockwave-flash\" wmode=\"window\" width=\"470\" height=\"353\" allowFullScreen=\"true\" ></EMBED></OBJECT>"
 ]				
 			];
 
